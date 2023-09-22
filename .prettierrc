@@ -1,0 +1,10 @@
+{
+  "printWidth": 115,
+  "tabWidth": 2,
+  "semi": true,
+  "trailingComma": "all",
+  "importOrder": ["^(^react$|@react|react|^recoil$)", "<THIRD_PARTY_MODULES>", "^@/(.*)$", "^[./]"],
+  "importOrderGroupNamespaceSpecifiers": true,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
