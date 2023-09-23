@@ -4,8 +4,7 @@ import { createRoot } from "react-dom/client";
 import "@mantine/core/styles.css";
 
 import { AppProviders } from "@/providers";
-
-import "./theme/fonts.css";
+import "@/theme/styles.css";
 
 const container = document.getElementById("root") as HTMLElement;
 const root = createRoot(container);
