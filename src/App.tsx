@@ -1,7 +1,7 @@
-import { Text } from "@mantine/core";
+import { AppRoutes } from "./router";
 
 function App() {
-  return <Text>Hello, this is a loong text</Text>;
+  return <AppRoutes />;
 }
 
 export default App;
