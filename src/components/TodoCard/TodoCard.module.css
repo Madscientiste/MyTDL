@@ -1,0 +1,43 @@
+.paper {
+  --paper-shadow: var(--mantine-shadow-sm);
+
+  max-width: 500px;
+  border-color: var(--mantine-color-red-5);
+  border-radius: var(--mantine-spacing-xs);
+  padding: var(--mantine-spacing-md);
+}
+
+.paper:hover {
+  border-color: var(--mantine-color-primary-3);
+}
+
+.checkbox {
+  pointer-events: none;
+}
+
+.middleSection {
+  --stack-gap: 0.16em;
+
+  flex-grow: 1;
+  user-select: none;
+
+  padding-right: var(--mantine-spacing-xs);
+  padding-left: var(--mantine-spacing-xs);
+}
+
+.leftSection {
+  --stack-align: stretch;
+  --stack-justify: center;
+
+  cursor: pointer;
+  min-height: 100%;
+  padding-right: var(--mantine-spacing-xs);
+}
+
+.rightSection {
+  --stack-gap: var(--mantine-spacing-xs);
+  --stack-align: start;
+
+  margin-bottom: auto;
+  padding-left: var(--mantine-spacing-xs);
+}
