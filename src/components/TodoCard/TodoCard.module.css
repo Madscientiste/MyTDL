@@ -1,9 +1,8 @@
 .paper {
   --paper-shadow: var(--mantine-shadow-sm);
 
-  max-width: 500px;
-  border-color: var(--mantine-color-red-5);
-  border-radius: var(--mantine-spacing-xs);
+  border-color: var(--mantine-color-gray-4);
+  border-radius: 4px;
   padding: var(--mantine-spacing-md);
 }
 
