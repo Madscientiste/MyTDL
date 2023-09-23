@@ -20,7 +20,7 @@ export function ThemeProvider({ children }: TBaseProviderProps) {
   // }, [isFetching]);
 
   return (
-    <MantineProvider theme={theme} defaultColorScheme="auto">
+    <MantineProvider theme={theme} defaultColorScheme="light">
       <Notifications position="bottom-center" />
       {/* <NavigationProgress initialProgress={0} /> */}
 
