@@ -1,17 +1,20 @@
 import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ActionIcon, Divider, Group, Paper, Stack, Text, ThemeIcon } from "@mantine/core";
-import { IconPencil, IconSquare, IconSquareCheck, IconTrash } from "@tabler/icons-react";
+import { IconPencil, IconSquare, IconSquareCheck } from "@tabler/icons-react";
+
+import { TTodoItem } from "@/type";
 
 import classes from "./TodoCard.module.css";
 
 type TTodoCardProps = {
-  title: string;
-  date: string;
+  todoItem: Pick<TTodoItem, "id" | "title" | "content" | "createdAt" | "completedAt">;
 };
 
-export function TodoCard({ title, date }: TTodoCardProps) {
-  const [checked, setChecked] = useState(false);
+export function TodoCard({ todoItem }: TTodoCardProps) {
+  const [checked, setChecked] = useState(!!todoItem.completedAt);
+  const navigate = useNavigate();
 
   const handleClick = useCallback(() => {
     setChecked((v) => !v);
@@ -35,28 +38,24 @@ export function TodoCard({ title, date }: TTodoCardProps) {
 
         <Stack className={classes.middleSection}>
           <Text td={checked ? "line-through" : undefined} size="lg">
-            {title}
+            {todoItem.title}
           </Text>
 
           <Text size="xs" c="dimmed">
-            No description provided
+            {todoItem.content || "No description provided"}
           </Text>
 
           <Divider my="0.25em" variant="dashed" />
 
           <Text ml="auto" size="xs" c={checked ? "lime.7" : "dimmed"} fw="bold">
-            {checked ? "Completed " : "Created "}
-            {date}
+            {checked ? "Completed" : "Created"} at{" "}
+            {(checked ? todoItem.completedAt : todoItem.createdAt)?.toISOString()}
           </Text>
         </Stack>
 
         <Stack className={classes.rightSection}>
-          <ActionIcon size="sm" variant="transparent">
+          <ActionIcon onClick={() => navigate(`/todos/${todoItem.id}`)} size="sm" variant="transparent">
             <IconPencil />
-          </ActionIcon>
-
-          <ActionIcon size="sm" variant="transparent" color="red.4">
-            <IconTrash />
           </ActionIcon>
         </Stack>
       </Group>
