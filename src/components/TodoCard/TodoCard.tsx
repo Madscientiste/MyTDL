@@ -29,6 +29,7 @@ export function TodoCard({ todoItem }: TTodoCardProps) {
               classNames={{ input: classes.checkbox }}
               color={checked ? "lime.6" : "gray"}
               checked={checked}
+              readOnly
             />
           </Box>
         </Stack>
