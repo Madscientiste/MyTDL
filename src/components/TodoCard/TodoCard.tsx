@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ActionIcon, Divider, Group, Paper, Stack, Text, ThemeIcon } from "@mantine/core";
-import { IconPencil, IconSquare, IconSquareCheck } from "@tabler/icons-react";
+import { ActionIcon, Box, Checkbox, Divider, Group, Paper, Stack, Text } from "@mantine/core";
+import { IconChevronRight } from "@tabler/icons-react";
 
 import { TTodoItem } from "@/type";
 
@@ -22,42 +22,32 @@ export function TodoCard({ todoItem }: TTodoCardProps) {
 
   return (
     <Paper className={classes.paper} withBorder>
-      <Group gap={0} align="stretch">
+      <Group gap={0} align="stretch" wrap="nowrap">
         <Stack className={classes.leftSection} onClick={handleClick}>
-          <ThemeIcon
-            className={classes.checkbox}
-            onClick={handleClick}
-            color={checked ? "lime.8" : "gray"}
-            variant="transparent"
-          >
-            {!checked ? <IconSquare /> : <IconSquareCheck />}
-          </ThemeIcon>
+          <Box className={classes.checkboxWrapper} onClick={handleClick}>
+            <Checkbox
+              classNames={{ input: classes.checkbox }}
+              color={checked ? "lime.6" : "gray"}
+              checked={checked}
+            />
+          </Box>
         </Stack>
 
         <Divider color="gray.2" size="sm" orientation="vertical" />
 
-        <Stack className={classes.middleSection}>
-          <Text td={checked ? "line-through" : undefined} size="lg">
-            {todoItem.title}
-          </Text>
+        {/* I think its better if we can click on the whole thing to see its details, rather than clicking on the leetle tinie chevron..
+          But keeping the checkbox's behaviour to mark an item as completed. */}
+        <Group className={classes.sectionWrapper} onClick={() => navigate(`/todos/${todoItem.id}`)}>
+          <Stack className={classes.middleSection}>
+            <Text td={checked ? "line-through" : undefined}>{todoItem.title}</Text>
+          </Stack>
 
-          <Text size="xs" c="dimmed">
-            {todoItem.content || "No description provided"}
-          </Text>
-
-          <Divider my="0.25em" variant="dashed" />
-
-          <Text ml="auto" size="xs" c={checked ? "lime.7" : "dimmed"} fw="bold">
-            {checked ? "Completed" : "Created"} at{" "}
-            {(checked ? todoItem.completedAt : todoItem.createdAt)?.toISOString()}
-          </Text>
-        </Stack>
-
-        <Stack className={classes.rightSection}>
-          <ActionIcon onClick={() => navigate(`/todos/${todoItem.id}`)} size="sm" variant="transparent">
-            <IconPencil />
-          </ActionIcon>
-        </Stack>
+          <Stack className={classes.rightSection}>
+            <ActionIcon color="black" size="sm" variant="transparent">
+              <IconChevronRight />
+            </ActionIcon>
+          </Stack>
+        </Group>
       </Group>
     </Paper>
   );
