@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 
-import { Container, Space, Stack, Text, Title } from "@mantine/core";
+import { Container, Space, Stack } from "@mantine/core";
+
+import { Hero } from "@/components/Hero";
 
 type TAppLayoutProps = {
   children: ReactNode;
@@ -8,15 +10,8 @@ type TAppLayoutProps = {
 
 export function AppLayout({ children }: TAppLayoutProps) {
   return (
-    <Container size="md" pt="xl">
-      <Stack gap="0.25em">
-        <Title c="gray.8" order={2}>
-          My Tasks
-        </Title>
-        <Text c="dimmed" size="sm">
-          Saturday 23th of September 2023
-        </Text>
-      </Stack>
+    <Container size="md">
+      <Hero />
 
       <Space h="xl" />
 
