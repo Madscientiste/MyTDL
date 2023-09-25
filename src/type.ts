@@ -13,5 +13,5 @@ export type TTodoItem = {
   createdAt: Date;
   updatedAt: Date;
 
-  completedAt?: Date;
+  completed: boolean;
 };
