@@ -2,10 +2,12 @@ import { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 import { Navigate, Outlet, RouteObject } from "react-router-dom";
 
-import { Loader } from "@mantine/core";
+import { Center, Loader } from "@mantine/core";
 
-import { Todo } from "./Todo";
-import { Todos } from "./Todos";
+import { lazyImport } from "@/utils/lazyImport";
+
+const { Todos } = lazyImport(() => import("./Todos"), "Todos");
+const { Todo } = lazyImport(() => import("./Todo"), "Todo");
 
 export const publicRoutes: RouteObject[] = [
   {
@@ -24,7 +26,13 @@ export const publicRoutes: RouteObject[] = [
 
 export function AppShell() {
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense
+      fallback={
+        <Center mih="100vh">
+          <Loader />
+        </Center>
+      }
+    >
       <Outlet />
     </Suspense>
   );
