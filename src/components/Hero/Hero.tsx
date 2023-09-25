@@ -1,5 +1,6 @@
-import { Button, Container, Text, TextInput, Title } from "@mantine/core";
+import { Container, Text, Title } from "@mantine/core";
 
+import { CreateTodo } from "../CreateTodo";
 import { Dots } from "./Dots";
 import classes from "./Hero.module.css";
 
@@ -26,13 +27,7 @@ export function Hero() {
           </Text>
         </Container>
 
-        <div className={classes.controls}>
-          <TextInput
-            placeholder="Bake cookies using firefox"
-            classNames={{ input: classes.input, root: classes.inputWrapper }}
-          />
-          <Button className={classes.control}>Add</Button>
-        </div>
+        <CreateTodo />
       </div>
     </Container>
   );
