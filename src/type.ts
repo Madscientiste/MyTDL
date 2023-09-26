@@ -5,12 +5,12 @@ export type TBaseProviderProps = {
 };
 
 export type TTodoItem = {
-  id: string;
+  id: number;
 
   title: string;
   content?: string;
   completed: boolean;
 
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 };
