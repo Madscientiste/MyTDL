@@ -1,18 +1,25 @@
-import { Grid } from "@mantine/core";
+import { Center, Loader, Stack } from "@mantine/core";
+
+import { useTodos } from "@/api/getTodos";
 
 import { TodoCard } from "../TodoCard";
-import { fakeTodoItems } from "./fake";
 
 export function TodoList() {
+  const todos = useTodos();
+
+  if (todos.isLoading) {
+    return (
+      <Center mih="10em">
+        <Loader />
+      </Center>
+    );
+  }
+
   return (
-    <Grid columns={1}>
-      {fakeTodoItems.map((todo) => {
-        return (
-          <Grid.Col key={todo.id} span={1}>
-            <TodoCard todoItem={todo} />
-          </Grid.Col>
-        );
+    <Stack pb="lg">
+      {todos.data?.slice(0, 8).map((todo) => {
+        return <TodoCard key={todo.id} id={todo.id} title={todo.title} completed={todo.completed} />;
       })}
-    </Grid>
+    </Stack>
   );
 }
