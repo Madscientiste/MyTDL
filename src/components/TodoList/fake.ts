@@ -1,20 +1,10 @@
-type TTodoItem = {
-  id: string;
-
-  title: string;
-  content?: string;
-
-  createdAt: Date;
-  updatedAt: Date;
-
-  completedAt?: Date;
-};
+import { TTodoItem } from "@/type";
 
 const generateDateFields = () => ({
   createdAt: new Date(),
   updatedAt: new Date(),
 
-  completedAt: Math.floor(Math.random() * 2) ? new Date() : undefined,
+  completed: !!Math.floor(Math.random() * 2),
 });
 
 const epoch = 1693519200 * 1000; // 01/09/2023
