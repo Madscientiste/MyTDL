@@ -2,9 +2,9 @@ import React, { Suspense } from "react";
 
 import { Loader } from "@mantine/core";
 
+import { GlobalErrorBoundary } from "@/components/ErrorBoundary";
 import { TBaseProviderProps } from "@/type";
 
-// import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { QueryProvider } from "./QueryProvider";
 import { RouterProvider } from "./RouterProvider";
 import { ThemeProvider } from "./ThemeProvider";
@@ -25,10 +25,10 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
         {composer({
           children,
           components: [
-            QueryProvider,
             RouterProvider,
             ThemeProvider,
-            // ErrorBoundary,
+            GlobalErrorBoundary,
+            QueryProvider,
             //
           ],
         })}
