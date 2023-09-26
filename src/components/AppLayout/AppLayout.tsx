@@ -15,7 +15,7 @@ export function AppLayout({ children }: TAppLayoutProps) {
 
       <Space h="xl" />
 
-      <Stack>{children}</Stack>
+      <Stack justify="center">{children}</Stack>
     </Container>
   );
 }
