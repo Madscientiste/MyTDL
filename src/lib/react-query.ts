@@ -3,15 +3,15 @@ import { DefaultOptions, QueryClient, UseMutationOptions, UseQueryOptions } from
 import { AxiosError } from "axios";
 import { PromiseValue } from "type-fest";
 
-const queryConfig: DefaultOptions = {
+const queryConfig: DefaultOptions<AxiosError> = {
   queries: {
-    useErrorBoundary: true,
+    useErrorBoundary: (error) => (error.response?.status || 500) >= 500,
     refetchOnWindowFocus: false,
     retry: false,
   },
 };
 
-export const queryClient: QueryClient = new QueryClient({ defaultOptions: queryConfig });
+export const queryClient: QueryClient = new QueryClient({ defaultOptions: queryConfig as DefaultOptions });
 
 export type ExtractFnReturnType<FnType extends (...args: any[]) => any> = PromiseValue<ReturnType<FnType>>;
 
