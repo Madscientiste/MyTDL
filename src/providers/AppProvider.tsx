@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 
 import { Loader } from "@mantine/core";
 
-import { GlobalErrorBoundary } from "@/components/ErrorBoundary";
+import { GlobalErrorBoundary } from "@/components/GlobalErrorBoundary";
 import { TBaseProviderProps } from "@/type";
 
 import { QueryProvider } from "./QueryProvider";
