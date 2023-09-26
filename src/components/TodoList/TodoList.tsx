@@ -1,4 +1,5 @@
 import { Center, Loader, Stack } from "@mantine/core";
+import { AnimationProps, motion } from "framer-motion";
 
 import { useTodos } from "@/api/getTodos";
 
@@ -18,7 +19,16 @@ export function TodoList() {
   return (
     <Stack pb="lg">
       {todos.data?.slice(0, 8).map((todo) => {
-        return <TodoCard key={todo.id} id={todo.id} title={todo.title} completed={todo.completed} />;
+        const transition: AnimationProps["transition"] = {
+          type: "spring",
+          duration: 0.5,
+        };
+
+        return (
+          <motion.div key={todo.id} transition={transition} layout>
+            <TodoCard id={todo.id} title={todo.title} completed={todo.completed} />
+          </motion.div>
+        );
       })}
     </Stack>
   );
