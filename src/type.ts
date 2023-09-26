@@ -9,9 +9,8 @@ export type TTodoItem = {
 
   title: string;
   content?: string;
+  completed: boolean;
 
   createdAt: Date;
   updatedAt: Date;
-
-  completed: boolean;
 };
