@@ -1,6 +1,6 @@
 import { FallbackProps } from "react-error-boundary";
 
-import { Alert, Group, Modal, Paper, Stack, Text, ThemeIcon } from "@mantine/core";
+import { Alert, Button, Group, Modal, Paper, Stack, Text, ThemeIcon } from "@mantine/core";
 import { IconAlertTriangle, IconBug } from "@tabler/icons-react";
 import { AxiosError } from "axios";
 
@@ -29,6 +29,10 @@ export function Fallback({ error, resetErrorBoundary }: FallbackProps) {
                 {error.message}
               </Text>
             </Paper>
+
+            <Button onClick={resetErrorBoundary} variant="light">
+              Retry
+            </Button>
           </Stack>
         </Modal.Body>
       </Modal.Content>
