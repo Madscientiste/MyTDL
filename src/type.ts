@@ -8,7 +8,7 @@ export type TTodoItem = {
   id: number | string;
 
   title: string;
-  content?: string;
+  description?: string;
   completed: boolean;
 
   created_at: string;
