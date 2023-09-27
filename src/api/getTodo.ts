@@ -10,12 +10,12 @@ export const getTodo = ({ id }: { id: TTodoItem["id"] }): Promise<TTodoItem> => 
 
 type QueryFnType = typeof getTodo;
 
-type UseDiscussionOptions = {
+type UseTodoOptions = {
   id: TTodoItem["id"];
   config?: QueryConfig<QueryFnType>;
 };
 
-export const useDiscussion = ({ id, config }: UseDiscussionOptions) => {
+export const useGetTodo = ({ id, config }: UseTodoOptions) => {
   return useQuery<ExtractFnReturnType<QueryFnType>>({
     ...config,
     queryKey: ["todos", id],

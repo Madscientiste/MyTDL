@@ -1,11 +1,11 @@
 import { Stack } from "@mantine/core";
 
-import { NotFound } from "@/components/NotFound";
+import { TodoDetails } from "@/components/TodoDetails";
 
 export function Todo() {
   return (
-    <Stack>
-      <NotFound />
+    <Stack mih="100vh" justify="center" align="center">
+      <TodoDetails />
     </Stack>
   );
 }

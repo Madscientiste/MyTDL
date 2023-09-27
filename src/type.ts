@@ -5,7 +5,7 @@ export type TBaseProviderProps = {
 };
 
 export type TTodoItem = {
-  id: number;
+  id: number | string;
 
   title: string;
   content?: string;

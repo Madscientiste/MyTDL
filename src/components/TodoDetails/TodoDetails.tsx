@@ -1,26 +1,90 @@
-import { Fragment, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
+import { ActionIcon, Group, Loader, NavLink, Paper, Stack, Text } from "@mantine/core";
+import { IconChevronLeft, IconTrash } from "@tabler/icons-react";
+
+import { useGetTodo } from "@/api/getTodo";
 
 import { NotFound } from "../NotFound";
-import { TodoCard } from "../TodoCard";
-import { fakeTodoItems } from "../TodoList/fake";
 
 // import classes from "./TodoDetails.module.css";
 
+const formatDate = (date: Date) => {
+  const now = new Date();
+  const yesterday = new Date(now);
+  yesterday.setDate(now.getDate() - 1);
+
+  const isToday = date.toDateString() === now.toDateString();
+  const isYesterday = date.toDateString() === yesterday.toDateString();
+  const options: Intl.DateTimeFormatOptions = { hour: "2-digit", minute: "2-digit" };
+
+  if (isToday || isYesterday) {
+    const prefix = (isToday && "Today") || (isYesterday && "Yesterday");
+    return `${prefix} at ${date.toLocaleString("en-US", options)}`;
+  }
+
+  return date.toLocaleDateString("en-US", { ...options, year: "numeric", month: "2-digit", day: "2-digit" });
+};
+
 export function TodoDetails() {
-  const { id } = useParams();
+  const { id = 0 } = useParams();
+  const todo = useGetTodo({ id });
 
-  const exists = useMemo(() => {
-    return fakeTodoItems.find((v) => v.id == id);
-  }, [id]);
+  if (todo.isLoading) {
+    return <Loader />;
+  }
 
-  if (!exists) {
+  if (!todo.data) {
     return <NotFound />;
   }
 
   return (
-    <Fragment>
-      <TodoCard todoItem={exists} />
-    </Fragment>
+    <Paper bg="transparent" miw={400}>
+      <Stack align="stretch">
+        <Group wrap="nowrap" justify="end">
+          <NavLink
+            p={0}
+            color="gray.9"
+            variant="subtle"
+            component={Link}
+            to="/"
+            label="Go back"
+            leftSection={<IconChevronLeft size={16} stroke={1.5} />}
+            active
+          />
+
+          <ActionIcon color="red.5" variant="light">
+            <IconTrash stroke={1.5} />
+          </ActionIcon>
+        </Group>
+
+        <Paper p="md" withBorder>
+          <Text size="xl">{todo.data.title}</Text>
+          <Text size="sm" c="dimmed">
+            {todo.data.content ?? "No description provided"}
+          </Text>
+        </Paper>
+
+        <Stack gap={2} px="xs">
+          <Group justify="space-between">
+            <Text fw="bold" size="xs" c="dimmed">
+              Created
+            </Text>
+            <Text size="xs" c="dimmed">
+              {formatDate(new Date(todo.data.created_at))}
+            </Text>
+          </Group>
+
+          <Group justify="space-between">
+            <Text fw="bold" size="xs" c="dimmed">
+              Updated
+            </Text>
+            <Text size="xs" c="dimmed">
+              {formatDate(new Date(todo.data.updated_at))}
+            </Text>
+          </Group>
+        </Stack>
+      </Stack>
+    </Paper>
   );
 }
