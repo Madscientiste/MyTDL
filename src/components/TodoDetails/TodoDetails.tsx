@@ -1,9 +1,10 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { ActionIcon, Group, Loader, NavLink, Paper, Stack, Text } from "@mantine/core";
 import { IconChevronLeft, IconTrash } from "@tabler/icons-react";
 
 import { useGetTodo } from "@/api/getTodo";
+import { useDeleteTodo } from "@/api/useDeleteTodo";
 
 import { NotFound } from "../NotFound";
 
@@ -29,6 +30,13 @@ const formatDate = (date: Date) => {
 export function TodoDetails() {
   const { id = 0 } = useParams();
   const todo = useGetTodo({ id });
+  const mutation = useDeleteTodo();
+  const navigate = useNavigate();
+
+  const handleDelete = async () => {
+    mutation.mutate({ id });
+    navigate("/");
+  };
 
   if (todo.isLoading) {
     return <Loader />;
@@ -53,8 +61,8 @@ export function TodoDetails() {
             active
           />
 
-          <ActionIcon color="red.5" variant="light">
-            <IconTrash stroke={1.5} />
+          <ActionIcon onClick={handleDelete} size="sm" color="red.5" variant="light" loading={mutation.isLoading}>
+            <IconTrash size={18} stroke={1.5} />
           </ActionIcon>
         </Group>
 

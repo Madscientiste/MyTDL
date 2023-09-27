@@ -16,8 +16,9 @@ type TUseTodosOptions = {
 
 export const useTodos = ({ config }: TUseTodosOptions = {}) => {
   return useQuery<ExtractFnReturnType<TQueryFnType>>({
+    ...config,
+    staleTime: 1000 * 60, // just a workaround for now
     queryKey: ["todos"],
     queryFn: () => getTodos(),
-    ...config,
   });
 };
