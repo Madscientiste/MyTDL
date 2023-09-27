@@ -25,7 +25,7 @@ function _TodoCard({ id, title, completed: checked }: TTodoCardProps) {
 
   return (
     <Paper data-checked={`${checked}`} className={classes.paper} withBorder>
-      <Group gap={0} align="stretch" wrap="nowrap">
+      <Group gap={0} wrap="nowrap">
         <Stack className={classes.leftSection} onClick={handleClick}>
           <Box className={classes.checkboxWrapper} onClick={handleClick}>
             <Checkbox
