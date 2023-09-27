@@ -69,7 +69,7 @@ export function TodoDetails() {
         <Paper p="md" withBorder>
           <Text size="xl">{todo.data.title}</Text>
           <Text size="sm" c="dimmed">
-            {todo.data.content ?? "No description provided"}
+            {todo.data.description ?? "No description provided"}
           </Text>
         </Paper>
 
