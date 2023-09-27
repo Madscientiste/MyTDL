@@ -10,7 +10,7 @@ import { TTodoItem } from "@/type";
 export type TCreateTodoPayload = {
   data: {
     title: string;
-    content?: string;
+    description?: string;
   };
 };
 
