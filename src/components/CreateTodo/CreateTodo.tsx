@@ -4,13 +4,14 @@ import { Button, Stack, TextInput } from "@mantine/core";
 import { IconPlus } from "@tabler/icons-react";
 
 import { useCreateTodo } from "@/api/createTodo";
+import { generateId } from "@/utils/snowflake";
 
 import classes from "./CreateTodo.module.css";
 
 type TFormElements = HTMLFormElement & {
   readonly elements: HTMLFormControlsCollection & {
     title: HTMLInputElement;
-    description: HTMLInputElement;
+    description?: HTMLInputElement;
   };
 };
 
@@ -22,14 +23,16 @@ export function CreateTodo() {
     e.preventDefault();
 
     const elements = e.currentTarget.elements;
-    const title = elements.title.value;
-    const description = elements.description.value;
 
-    const vars = { data: { title, description } };
+    const id = generateId(); // this is so react doesn't complain about the unique key prop thingy
+    const title = elements.title.value;
+    const description = elements.description?.value;
+
+    const vars = { data: { id, title, description } };
     await mutation.mutateAsync(vars, {
       onSuccess: () => {
         elements.title.value = "";
-        elements.description.value = "";
+        if (elements.description) elements.description.value = "";
       },
     });
   };
@@ -39,6 +42,7 @@ export function CreateTodo() {
       <div className={classes.controls}>
         <Stack style={{ width: "100%" }} gap="xs">
           <TextInput
+            required
             name="title"
             placeholder="Title"
             classNames={{ input: classes.input, root: classes.inputWrapper }}
