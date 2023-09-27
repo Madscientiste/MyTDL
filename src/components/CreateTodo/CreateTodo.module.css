@@ -34,3 +34,16 @@
   border-bottom-right-radius: 0;
   border-right: 0;
 }
+
+.button {
+  --button-height: var(--button-height-xs);
+  --button-padding-x: var(--button-padding-x-xs);
+  --button-fz: var(--mantine-font-size-xs);
+  --button-bg: transparent;
+  --button-hover: var(--mantine-color-primary-light-hover);
+  --button-color: var(--mantine-color-primary-light-color);
+  --button-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent;
+
+  width: fit-content;
+  display: flex;
+}
