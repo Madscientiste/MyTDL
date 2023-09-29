@@ -5,7 +5,7 @@ export const db = factory({
   todo: {
     id: primaryKey(String),
     title: String,
-    content: String,
+    description: String,
     completed: Boolean,
     created_at: Number,
     updated_at: Number,

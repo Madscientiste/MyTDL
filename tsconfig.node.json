@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["vitest"],
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "node",

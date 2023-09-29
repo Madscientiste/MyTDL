@@ -8,6 +8,13 @@ const usePath = (_path: string, ...other: string[]) => path.join(__dirname, _pat
 export default defineConfig({
   plugins: [react()],
 
+  test: {
+    globals: true,
+    environment: "happy-dom",
+    include: ["src/**/*.test.{ts,tsx}"],
+    setupFiles: [path.join(usePath("./test/setup.ts"))],
+  },
+
   resolve: {
     alias: [
       { find: "@", replacement: path.join(usePath("./src")) },

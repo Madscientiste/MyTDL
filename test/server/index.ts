@@ -1,16 +1,14 @@
-import { handlers } from "./handlers";
-
 export const initMocks = () => {
   if (import.meta.env.DEV) {
     const noWindow = typeof window === "undefined";
 
     if (noWindow) {
-      import("msw/node").then(({ setupServer }) => {
-        setupServer(...handlers).listen({ onUnhandledRequest: "bypass" });
+      import("./server").then(({ server }) => {
+        server.listen({ onUnhandledRequest: "bypass" });
       });
     } else {
-      import("msw").then(({ setupWorker }) => {
-        setupWorker(...handlers).start({ onUnhandledRequest: "bypass" });
+      import("./worker").then(({ worker }) => {
+        worker.start({ onUnhandledRequest: "bypass" });
       });
     }
   }

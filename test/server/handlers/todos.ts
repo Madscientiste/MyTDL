@@ -10,8 +10,10 @@ type TTodoBody = {
   content: string;
 };
 
+const APP_URL = "http://localhost";
+
 export const todoHandlers = [
-  rest.get(`/api/todos/`, (_req, _res, ctx) => {
+  rest.get(`${APP_URL}/api/todos/`, (_req, _res, ctx) => {
     try {
       const result = db.todo.findMany({
         orderBy: [{ completed: "asc" }, { updated_at: "asc" }],
@@ -23,7 +25,7 @@ export const todoHandlers = [
     }
   }),
 
-  rest.post<TTodoBody>(`/api/todos/`, async (req, _res, ctx) => {
+  rest.post<TTodoBody>(`${APP_URL}/api/todos/`, async (req, _res, ctx) => {
     try {
       const data = await req.json();
       const result = db.todo.create({
@@ -41,7 +43,7 @@ export const todoHandlers = [
     }
   }),
 
-  rest.get(`/api/todos/:id/`, (req, _res, ctx) => {
+  rest.get(`${APP_URL}/api/todos/:id/`, (req, _res, ctx) => {
     try {
       const { id } = req.params;
       const result = db.todo.findFirst({ where: { id: { equals: `${id}` } } });
@@ -51,7 +53,7 @@ export const todoHandlers = [
     }
   }),
 
-  rest.patch<TTodoBody>(`/api/todos/:id/`, async (req, _res, ctx) => {
+  rest.patch<TTodoBody>(`${APP_URL}/api/todos/:id/`, async (req, _res, ctx) => {
     try {
       const data = await req.json();
       const { id } = req.params;
@@ -64,7 +66,7 @@ export const todoHandlers = [
     }
   }),
 
-  rest.delete(`/api/todos/:id/`, (req, _res, ctx) => {
+  rest.delete(`${APP_URL}/api/todos/:id/`, (req, _res, ctx) => {
     try {
       const { id } = req.params;
       const result = db.todo.delete({ where: { id: { equals: `${id}` } } });
