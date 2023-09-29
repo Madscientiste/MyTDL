@@ -12,13 +12,13 @@ export function TodoList() {
   if (todos.isLoading) {
     return (
       <Center mih="10em">
-        <Loader />
+        <Loader aria-label="loader" />
       </Center>
     );
   }
 
   return (
-    <Stack pb="lg">
+    <Stack aria-label="todo-stack" pb="lg">
       {!todos.data?.length && (
         <Paper p="xl" withBorder>
           <Stack align="center" gap={0}>

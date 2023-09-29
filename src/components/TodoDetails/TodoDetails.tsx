@@ -39,7 +39,7 @@ export function TodoDetails() {
   };
 
   if (todo.isLoading) {
-    return <Loader />;
+    return <Loader aria-label="loader" />;
   }
 
   if (!todo.data) {

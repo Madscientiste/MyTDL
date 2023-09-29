@@ -21,7 +21,7 @@ function composer({ children, components = [] }: TComposerProps) {
 export function AppProviders({ children }: { children: React.ReactNode }) {
   return (
     <React.Fragment>
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<Loader aria-label="loader" />}>
         {composer({
           children,
           components: [

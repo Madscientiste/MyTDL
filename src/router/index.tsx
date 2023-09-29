@@ -29,7 +29,7 @@ export function AppShell() {
     <Suspense
       fallback={
         <Center mih="100vh">
-          <Loader />
+          <Loader aria-label="loader" />
         </Center>
       }
     >
