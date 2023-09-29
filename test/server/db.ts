@@ -37,6 +37,7 @@ export const initializeDb = () => {
 
 export const resetDb = () => {
   window.localStorage.clear();
+  db.todo.deleteMany({ where: { id: { notContains: "*" } } });
 };
 
 initializeDb();
