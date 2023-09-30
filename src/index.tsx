@@ -5,7 +5,9 @@
 // and achieve the best possible performance
 import { initMocks } from "@test/server";
 
-initMocks();
+if (import.meta.env.DEV) {
+  initMocks();
+}
 
 Promise.all([import("@/Root"), import("@/App")]).then(([{ default: render }, { default: App }]) => {
   render(App);
