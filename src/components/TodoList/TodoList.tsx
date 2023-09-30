@@ -18,7 +18,7 @@ export function TodoList() {
   }
 
   return (
-    <Stack aria-label="todo-stack" pb="lg">
+    <Stack pb="lg">
       {!todos.data?.length && (
         <Paper p="xl" withBorder>
           <Stack align="center" gap={0}>
@@ -31,7 +31,7 @@ export function TodoList() {
         </Paper>
       )}
 
-      {todos.data?.slice(0, 8).map((todo) => {
+      {todos.data?.map((todo) => {
         const transition: AnimationProps["transition"] = {
           type: "spring",
           duration: 0.5,
