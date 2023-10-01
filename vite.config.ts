@@ -8,6 +8,10 @@ const usePath = (_path: string, ...other: string[]) => path.join(__dirname, _pat
 export default defineConfig({
   plugins: [react()],
 
+  define: {
+    __VITE_ENABLE_FAKE_BACKEND__: true,
+  },
+
   test: {
     globals: true,
     environment: "jsdom",

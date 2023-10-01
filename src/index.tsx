@@ -6,7 +6,7 @@
 import { initMocks } from "@test/server";
 
 // this is so mocking is only enabled for certain cenarios
-if (import.meta.env.STANDALONE) {
+if (__VITE_ENABLE_FAKE_BACKEND__) {
   initMocks();
 }
 
