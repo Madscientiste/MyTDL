@@ -3,7 +3,7 @@ import { rest } from "msw";
 import { generateId } from "@/utils/snowflake";
 
 import { db, persistDb } from "../db";
-import { delayedResponse } from "../utils";
+import { delayedResponse, sortTasks } from "../utils";
 
 type TTodoBody = {
   title: string;
@@ -15,9 +15,7 @@ const APP_URL = process.env.NODE_ENV == "test" ? "http://localhost" : "";
 export const todoHandlers = [
   rest.get(`${APP_URL}/api/todos/`, (_req, _res, ctx) => {
     try {
-      const result = db.todo.findMany({
-        orderBy: [{ completed: "asc" }, { updated_at: "asc" }],
-      });
+      let result = db.todo.findMany({}).sort(sortTasks);
 
       return delayedResponse(ctx.json(result));
     } catch (error: any) {
