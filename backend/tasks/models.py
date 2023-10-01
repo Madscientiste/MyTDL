@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import IntegerField, F, Value, Window
+from django.db.models.functions import Cast, RowNumber
 
 
 class Task(models.Model):
@@ -13,6 +15,5 @@ class Task(models.Model):
         return f"<task: {self.title}>"
 
     class Meta:
-        ordering = ("-completed",)
         verbose_name = "task"
         verbose_name_plural = "tasks"
