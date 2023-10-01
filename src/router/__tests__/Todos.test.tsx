@@ -41,15 +41,15 @@ test("should mark todo as completed", async () => {
 
   const todo = todos[randIdx];
 
-  // item placement
   await render(<Todos />);
 
-  const cardText = screen.getByLabelText(todo.title);
-  const cardCheckbox = screen.getByLabelText(`checkbox-${todo.title}`);
+  const cardRoot = screen.getByLabelText(`${todo.title}-card`);
+  const cardCheckbox = screen.getByLabelText(`${todo.title}-checkbox`);
 
   userEvent.click(cardCheckbox);
 
-  
-
-  // testing for the data-checked=true and contains checkbox-$todo.title
+  // Good enough for now, as the CSS does the rest of the job ( coloring & strikethough )
+  await waitFor(() => {
+    return expect(cardRoot).toHaveAttribute("data-checked", "true");
+  });
 });

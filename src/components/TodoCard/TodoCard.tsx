@@ -11,7 +11,7 @@ import classes from "./TodoCard.module.css";
 
 type TTodoCardProps = Pick<TTodoItem, "id" | "title" | "completed">;
 
-  function _TodoCard({ id, title, completed: checked }: TTodoCardProps) {
+function _TodoCard({ id, title, completed: checked }: TTodoCardProps) {
   const mutation = useUpdateTodo();
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ type TTodoCardProps = Pick<TTodoItem, "id" | "title" | "completed">;
   return (
     <Paper aria-label={`${title}-card`} data-checked={`${checked}`} className={classes.paper} withBorder>
       <Group gap={0} wrap="nowrap">
-        <Stack aria-label={`checkbox-${title}`} className={classes.leftSection} onClick={handleClick}>
+        <Stack aria-label={`${title}-checkbox`} className={classes.leftSection} onClick={handleClick}>
           <Box className={classes.checkboxWrapper} onClick={handleClick}>
             <Checkbox
               classNames={{ input: classes.checkbox }}
