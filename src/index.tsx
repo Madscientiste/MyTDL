@@ -5,7 +5,8 @@
 // and achieve the best possible performance
 import { initMocks } from "@test/server";
 
-if (import.meta.env.DEV) {
+// this is so mocking is only enabled for certain cenarios
+if (import.meta.env.STANDALONE) {
   initMocks();
 }
 
