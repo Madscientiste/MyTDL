@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
     "typecheck": "tsc --noEmit",
-    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
+    "prettier": "prettier  --write \"**/*.+(js|json|ts|tsx)\"",
     "vitest": "vitest",
     "storybook:start": "start-storybook -p 6006",
     "storybook:build": "build-storybook -s public",
