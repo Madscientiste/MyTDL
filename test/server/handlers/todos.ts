@@ -10,7 +10,7 @@ type TTodoBody = {
   content: string;
 };
 
-const APP_URL = process.env.NODE_ENV == "test" ? "http://localhost" : "";
+const APP_URL = process.env.NODE_ENV == "test" ? "http://localhost" : "/MyTDL";
 
 export const todoHandlers = [
   rest.get(`${APP_URL}/api/todos/`, (_req, _res, ctx) => {
