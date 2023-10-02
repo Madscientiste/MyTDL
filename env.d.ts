@@ -7,4 +7,4 @@ interface ImportMeta {
 }
 
 declare const __VITE_ENABLE_FAKE_BACKEND__: boolean;
-declare const __VITE_APP_URL__: string;
+declare const __VITE_APP_BASE_PATH__: string;
