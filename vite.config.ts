@@ -8,6 +8,7 @@ const usePath = (_path: string, ...other: string[]) => path.join(__dirname, _pat
 export default defineConfig(({ command, mode }) => {
   return {
     plugins: [react()],
+    base: "/MyTDL",
 
     define: {
       __VITE_ENABLE_FAKE_BACKEND__: mode === "github",
