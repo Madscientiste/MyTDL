@@ -10,6 +10,8 @@ if (__VITE_ENABLE_FAKE_BACKEND__) {
   initMocks();
 }
 
+console.log(import.meta.url);
+
 Promise.all([import("@/Root"), import("@/App")]).then(([{ default: render }, { default: App }]) => {
   render(App);
 });
