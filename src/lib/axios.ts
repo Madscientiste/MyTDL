@@ -1,5 +1,7 @@
 import Axios from "axios";
 
-export const axios = Axios.create({ baseURL: "/api", timeout: 20000 });
+import { API_BASE_URL } from "@/config";
+
+export const axios = Axios.create({ baseURL: API_BASE_URL, timeout: 20000 });
 
 axios.interceptors.response.use((response) => response.data);

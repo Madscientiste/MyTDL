@@ -1,5 +1,6 @@
 import { rest } from "msw";
 
+import { API_BASE_URL } from "@/config";
 import { generateId } from "@/utils/snowflake";
 
 import { db, persistDb } from "../db";
@@ -10,10 +11,8 @@ type TTodoBody = {
   content: string;
 };
 
-const APP_URL = process.env.NODE_ENV == "test" ? "http://localhost" : "__VITE_APP_BASE_PATH__";
-
 export const todoHandlers = [
-  rest.get(`${APP_URL}/api/todos/`, (_req, _res, ctx) => {
+  rest.get(`${API_BASE_URL}/todos/`, (_req, _res, ctx) => {
     try {
       let result = db.todo.findMany({}).sort(sortTasks as any);
 
@@ -23,7 +22,7 @@ export const todoHandlers = [
     }
   }),
 
-  rest.post<TTodoBody>(`${APP_URL}/api/todos/`, async (req, _res, ctx) => {
+  rest.post<TTodoBody>(`${API_BASE_URL}/todos/`, async (req, _res, ctx) => {
     try {
       const data = await req.json();
       const result = db.todo.create({
@@ -41,7 +40,7 @@ export const todoHandlers = [
     }
   }),
 
-  rest.get(`${APP_URL}/api/todos/:id/`, (req, _res, ctx) => {
+  rest.get(`${API_BASE_URL}/todos/:id/`, (req, _res, ctx) => {
     try {
       const { id } = req.params;
       const result = db.todo.findFirst({ where: { id: { equals: `${id}` } } });
@@ -51,7 +50,7 @@ export const todoHandlers = [
     }
   }),
 
-  rest.patch<TTodoBody>(`${APP_URL}/api/todos/:id/`, async (req, _res, ctx) => {
+  rest.patch<TTodoBody>(`${API_BASE_URL}/todos/:id/`, async (req, _res, ctx) => {
     try {
       const data = await req.json();
       const { id } = req.params;
@@ -64,7 +63,7 @@ export const todoHandlers = [
     }
   }),
 
-  rest.delete(`${APP_URL}/api/todos/:id/`, (req, _res, ctx) => {
+  rest.delete(`${API_BASE_URL}/todos/:id/`, (req, _res, ctx) => {
     try {
       const { id } = req.params;
       const result = db.todo.delete({ where: { id: { equals: `${id}` } } });

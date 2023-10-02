@@ -1,7 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 
+import { APP_BASENAME } from "@/config";
 import { TBaseProviderProps } from "@/type";
 
 export function RouterProvider({ children }: TBaseProviderProps) {
-  return <BrowserRouter basename={"__VITE_APP_BASE_PATH__"}>{children}</BrowserRouter>;
+  return <BrowserRouter basename={APP_BASENAME}>{children}</BrowserRouter>;
 }
