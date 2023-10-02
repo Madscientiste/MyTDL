@@ -6,14 +6,8 @@ const usePath = (_path: string, ...other: string[]) => path.join(__dirname, _pat
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-  const enableBackend = ["vercel", "github"].includes(mode);
-
   return {
     plugins: [react()],
-
-    define: {
-      __VITE_ENABLE_FAKE_BACKEND__: enableBackend,
-    },
 
     test: {
       globals: true,
