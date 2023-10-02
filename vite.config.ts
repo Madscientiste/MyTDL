@@ -28,11 +28,12 @@ export default defineConfig(({ command, mode }) => {
     },
 
     build: {
-      outDir: "dist",
+      outDir: "docs",
       manifest: true,
       emptyOutDir: false,
       rollupOptions: {
-        input: path.join(usePath("./src"), "index.tsx"),
+        // Not removing this file from the build will causes issues
+        external: [path.join(usePath("./test/server/server.ts"))],
         output: {
           chunkFileNames: "js/[name].chunk-[hash].js",
           entryFileNames: "js/[name]-[hash].js",

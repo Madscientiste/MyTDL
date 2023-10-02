@@ -15,7 +15,7 @@ const APP_URL = process.env.NODE_ENV == "test" ? "http://localhost" : "";
 export const todoHandlers = [
   rest.get(`${APP_URL}/api/todos/`, (_req, _res, ctx) => {
     try {
-      let result = db.todo.findMany({}).sort(sortTasks);
+      let result = db.todo.findMany({}).sort(sortTasks as any);
 
       return delayedResponse(ctx.json(result));
     } catch (error: any) {
