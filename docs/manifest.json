@@ -1,10 +1,10 @@
 {
-  "_App.chunk-b2350813.js": {
+  "_App.chunk-167bb5ce.js": {
     "dynamicImports": [
       "src/router/Todos.tsx",
       "src/router/Todo.tsx"
     ],
-    "file": "js/App.chunk-b2350813.js",
+    "file": "js/App.chunk-167bb5ce.js",
     "imports": [
       "_index.chunk-71d40fc6.js",
       "index.html"
@@ -43,9 +43,9 @@
   "index.html": {
     "dynamicImports": [
       "src/Root.tsx",
-      "_App.chunk-b2350813.js"
+      "_App.chunk-167bb5ce.js"
     ],
-    "file": "js/index-a2f42c9f.js",
+    "file": "js/index-5f9f6c45.js",
     "isEntry": true,
     "src": "index.html"
   },
@@ -93,13 +93,13 @@
     "css": [
       "assets/Todos.css"
     ],
-    "file": "js/Todos.chunk-4b674932.js",
+    "file": "js/Todos.chunk-26186a57.js",
     "imports": [
       "_index.chunk-71d40fc6.js",
       "_notifications.chunk-f3c836a0.js",
       "_notifications.store.chunk-9fb243d2.js",
       "_IconAlertTriangle.chunk-05dd0329.js",
-      "_App.chunk-b2350813.js",
+      "_App.chunk-167bb5ce.js",
       "index.html"
     ],
     "isDynamicEntry": true,
