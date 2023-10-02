@@ -6,11 +6,9 @@
 import { initMocks } from "@test/server";
 
 // this is so mocking is only enabled for certain cenarios
-if (import.meta.env.VITE_ENABLE_FAKE_BACKEND) {
+if (import.meta.env.VITE_ENABLE_FAKE_BACKEND == "true") {
   initMocks();
 }
-
-console.log(import.meta.url);
 
 Promise.all([import("@/Root"), import("@/App")]).then(([{ default: render }, { default: App }]) => {
   render(App);
