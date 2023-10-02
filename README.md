@@ -1,5 +1,9 @@
 # React TODO List App
 
+You can test the app [here](tdl-liard.vercel.app) (mocked backend)
+
+> **Note**: I don't sort the items off the frontend, instead i let django handle that.
+
 ## Overview
 
 This is a simple TODO list app built with React and Django.
@@ -11,8 +15,7 @@ This is a simple TODO list app built with React and Django.
 Before running the app, make sure you have the following installed:
 
 - Docker
-- Node.js
-- npm (Node Package Manager)
+- Node.js & NPM
 
 ### Installation
 
