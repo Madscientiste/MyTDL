@@ -1,6 +1,6 @@
 # React TODO List App
 
-You can test the app [here](tdl-liard.vercel.app) (mocked backend)
+You can test the app [here](https://tdl-liard.vercel.app/) (mocked backend)
 
 > **Note**: I don't sort the items off the frontend, instead i let django handle that.
 
